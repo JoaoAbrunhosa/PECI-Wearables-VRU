@@ -80,6 +80,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            gap: 12px;
         }
         .nav-logo {
             color: var(--white);
@@ -90,6 +91,12 @@
             flex-shrink: 0;
         }
         .nav-logo span { color: var(--primary-light); }
+        /* Right side of nav: links + lang btn + hamburger */
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
         .nav-links { display: flex; gap: 4px; flex-wrap: wrap; justify-content: flex-end; }
         .nav-links a {
             color: rgba(255,255,255,0.65);
@@ -107,6 +114,27 @@
             color: var(--white);
             background: rgba(255,255,255,0.09);
         }
+        /* Botão de idioma */
+        .lang-btn {
+            background: rgba(255,255,255,0.10);
+            border: 1px solid rgba(255,255,255,0.28);
+            color: rgba(255,255,255,0.80);
+            padding: 5px 13px;
+            border-radius: 20px;
+            font-size: 0.70rem;
+            font-weight: 700;
+            letter-spacing: 1.2px;
+            cursor: pointer;
+            transition: var(--transition);
+            flex-shrink: 0;
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1;
+        }
+        .lang-btn:hover {
+            background: rgba(255,255,255,0.20);
+            color: var(--white);
+            border-color: rgba(255,255,255,0.45);
+        }
         /* Hambúrguer (mobile) */
         .nav-toggle {
             display: none;
@@ -115,6 +143,8 @@
             gap: 5px;
             cursor: pointer;
             padding: 4px;
+            background: none;
+            border: none;
         }
         .nav-toggle span {
             display: block;
@@ -705,31 +735,27 @@
             transition: opacity var(--transition);
         }
         .inst-logo:hover { opacity: 1; }
-        .inst-logo-mark {
-            width: 36px;
-            height: 36px;
-            border-radius: 7px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 700;
-            font-size: 0.85rem;
-            letter-spacing: -0.5px;
-            flex-shrink: 0;
-        }
+        /* Imagem quadrada (IT) */
         .inst-logo-img {
-            width: 36px;
             height: 36px;
-            border-radius: 7px;
+            width: 36px;
+            border-radius: 6px;
             object-fit: contain;
             flex-shrink: 0;
             background: rgba(255,255,255,0.08);
             padding: 3px;
         }
-        .mark-ua  { background: #005a8e; color: #fff; }
-        .mark-it  { background: #c0392b; color: #fff; }
-        .mark-nap { background: #374151; color: #fff; font-size: 0.72rem; }
+        /* Imagem retangular (UA, NAP) */
+        .inst-logo-img-rect {
+            height: 36px;
+            width: auto;
+            max-width: 110px;
+            border-radius: 6px;
+            object-fit: contain;
+            flex-shrink: 0;
+            background: rgba(255,255,255,0.08);
+            padding: 3px;
+        }
         .inst-logo-text {
             display: flex;
             flex-direction: column;
@@ -787,17 +813,20 @@
     <nav id="navbar">
         <div class="nav-container container">
             <a href="#page-top" class="nav-logo">PECI <span>|</span> Wearables VRU</a>
-            <button class="nav-toggle" id="navToggle" aria-label="Menu">
-                <span></span><span></span><span></span>
-            </button>
-            <div class="nav-links" id="navLinks">
-                <a href="#about">Sobre</a>
-                <a href="#tasks">Tarefas</a>
-                <a href="#tech">Tecnologias</a>
-                <a href="#roadmap">Roadmap</a>
-                <a href="#docs">Documentos</a>
-                <a href="#related">Trabalhos Relacionados</a>
-                <a href="#team">Equipa</a>
+            <div class="nav-right">
+                <div class="nav-links" id="navLinks">
+                    <a href="#about"   data-i18n="nav-about">Sobre</a>
+                    <a href="#tasks"   data-i18n="nav-tasks">Tarefas</a>
+                    <a href="#tech"    data-i18n="nav-tech">Tecnologias</a>
+                    <a href="#roadmap" data-i18n="nav-roadmap">Roadmap</a>
+                    <a href="#docs"    data-i18n="nav-docs">Documentos</a>
+                    <a href="#related" data-i18n="nav-related">Trabalhos Relacionados</a>
+                    <a href="#team"    data-i18n="nav-team">Equipa</a>
+                </div>
+                <button class="lang-btn" id="langToggle" aria-label="Switch language">EN</button>
+                <button class="nav-toggle" id="navToggle" aria-label="Menu">
+                    <span></span><span></span><span></span>
+                </button>
             </div>
         </div>
     </nav>
@@ -806,20 +835,20 @@
     <header id="page-top">
         <div class="hero-content">
             <div class="hero-badge">PECI 2025 / 2026 &nbsp;·&nbsp; Universidade de Aveiro</div>
-            <h1>Wearables Programáveis para<br>Perceção Humana</h1>
-            <p>Aquisição multimodal baseada em Wearables para garantir a segurança de peões e utilizadores vulneráveis (VRUs) em cidades inteligentes.</p>
+            <h1 data-i18n="hero-h1">Wearables Programáveis para<br>Perceção Humana</h1>
+            <p data-i18n="hero-p">Aquisição multimodal baseada em Wearables para garantir a segurança de peões e utilizadores vulneráveis (VRUs) em cidades inteligentes.</p>
             <div class="hero-actions">
                 <a href="#about" class="btn btn-primary">
-                    <i class="fa-solid fa-arrow-down"></i> Descobrir o Projeto
+                    <i class="fa-solid fa-arrow-down"></i> <span data-i18n="hero-cta1">Descobrir o Projeto</span>
                 </a>
                 <a href="#team" class="btn btn-outline">
-                    <i class="fa-solid fa-users"></i> A Equipa
+                    <i class="fa-solid fa-users"></i> <span data-i18n="hero-cta2">A Equipa</span>
                 </a>
             </div>
         </div>
         <div class="hero-scroll">
             <i class="fa-solid fa-chevron-down"></i>
-            scroll
+            <span data-i18n="hero-scroll">scroll</span>
         </div>
     </header>
 
@@ -827,35 +856,35 @@
     <section id="about">
         <div class="container">
             <div class="section-title fade-up">
-                <h2>Problema &amp; Oportunidade</h2>
+                <h2 data-i18n="about-h2">Problema &amp; Oportunidade</h2>
                 <div class="title-bar"></div>
-                <p>Porquê Wearables? Porque o utilizador vulnerável já está no centro do problema.</p>
+                <p data-i18n="about-sub">Porquê Wearables? Porque o utilizador vulnerável já está no centro do problema.</p>
             </div>
             <div class="about-grid">
                 <div class="about-text fade-up">
-                    <p>Embora a expansão das <strong>Cidades Inteligentes</strong> e da condução autónoma seja uma realidade, a segurança rodoviária ainda depende fortemente de infraestruturas fixas, como radares e câmaras. Estes sistemas tradicionais apresentam lacunas críticas, nomeadamente a <strong>cobertura geográfica limitada e a existência de pontos cegos</strong>.</p>
-                    <p>O nosso projeto propõe uma mudança de paradigma ao colocar o <strong>Utilizador Vulnerável (VRU)</strong> no centro da rede de segurança. Através de sensores integrados em <strong>Wearables</strong> de uso quotidiano, captamos dados multimodais — como gestos, postura e comandos de voz — e convertemo-los em <strong>'intenções'</strong> detetáveis em tempo real por veículos conectados.</p>
+                    <p data-i18n="about-p1">A procura por <strong>Cidades Inteligentes</strong> e condução autónoma está a crescer rapidamente. No entanto, os sistemas tradicionais baseados em infraestrutura — câmaras e radares fixos — revelam-se frequentemente insuficientes devido a <strong>cobertura limitada, pontos cegos e custos elevados</strong> de implementação e manutenção.</p>
+                    <p data-i18n="about-p2">O nosso projeto aborda este problema diretamente a partir da perspetiva do utilizador vulnerável (peão / ciclista). Aproveitando os sensores presentes nos <strong>Wearables</strong> que já usamos quotidianamente, é possível detetar gestos, postura e atenção, convertendo-os em "intenções" transmitidas em tempo real para os veículos conectados.</p>
                 </div>
                 <div class="about-highlights fade-up delay-2">
                     <div class="highlight-card">
                         <div class="highlight-icon"><i class="fa-solid fa-eye-slash"></i></div>
                         <div>
-                            <h4>Aquisição Multimodal de VRU</h4>
-                            <p>Superação dos pontos cegos da infraestrutura fixa através da rede de sensores móveis transportados pelo próprio utilizador.</p>
+                            <h4 data-i18n="hl1-h4">Pontos Cegos &amp; Cobertura</h4>
+                            <p data-i18n="hl1-p">Infraestrutura estática não cobre todos os cenários de risco urbano.</p>
                         </div>
                     </div>
                     <div class="highlight-card">
                         <div class="highlight-icon"><i class="fa-solid fa-cloud"></i></div>
                         <div>
-                            <h4>Processamento na Cloud</h4>
-                            <p>Dados anonimizados enviados para cloud com maior capacidade computacional para inferência dos modelos de ML.</p>
+                            <h4 data-i18n="hl2-h4">Processamento na Cloud</h4>
+                            <p data-i18n="hl2-p">Dados anonimizados enviados para cloud com maior capacidade computacional para inferência dos modelos de ML.</p>
                         </div>
                     </div>
                     <div class="highlight-card">
                         <div class="highlight-icon"><i class="fa-solid fa-tower-broadcast"></i></div>
                         <div>
-                            <h4>Integração V2X</h4>
-                            <p>As intenções detetadas são propagadas em tempo real via ITS-G5 / C-V2X.</p>
+                            <h4 data-i18n="hl3-h4">Integração V2X</h4>
+                            <p data-i18n="hl3-p">As intenções detetadas são propagadas em tempo real via ITS-G5 / C-V2X.</p>
                         </div>
                     </div>
                 </div>
@@ -865,8 +894,8 @@
             <div class="privacy-banner fade-up delay-3">
                 <i class="fa-solid fa-shield-halved"></i>
                 <div class="privacy-text">
-                    <h4>Privacidade &amp; Conformidade RGPD</h4>
-                    <p>Os dados recolhidos — incluindo gestos e postura captados pelos Wearables — são <strong>anonimizados na origem</strong>, antes de qualquer transmissão. Os dados anonimizados são enviados para uma <strong>infraestrutura cloud</strong> para processamento pelos modelos de ML, dado o maior poder computacional disponível face ao dispositivo móvel. Nenhum dado pessoal identificável é transmitido ou armazenado externamente. Todo o tratamento de informação está em conformidade com o <strong>Regulamento Geral sobre a Proteção de Dados (RGPD / GDPR)</strong>, garantindo a privacidade e os direitos dos participantes em todas as fases do projeto.</p>
+                    <h4 data-i18n="privacy-h4">Privacidade &amp; Conformidade RGPD</h4>
+                    <p data-i18n="privacy-p">Os dados recolhidos — incluindo gestos e postura captados pelos Wearables — são <strong>anonimizados na origem</strong>, antes de qualquer transmissão. Os dados anonimizados são enviados para uma <strong>infraestrutura cloud</strong> para processamento pelos modelos de ML, dado o maior poder computacional disponível face ao dispositivo móvel. Nenhum dado pessoal identificável é transmitido ou armazenado externamente. Todo o tratamento de informação está em conformidade com o <strong>Regulamento Geral sobre a Proteção de Dados (RGPD / GDPR)</strong>, garantindo a privacidade e os direitos dos participantes em todas as fases do projeto.</p>
                 </div>
             </div>
         </div>
@@ -876,40 +905,40 @@
     <section id="tasks" class="bg-light">
         <div class="container">
             <div class="section-title fade-up">
-                <h2>Tarefas do Projeto</h2>
+                <h2 data-i18n="tasks-h2">Tarefas do Projeto</h2>
                 <div class="title-bar"></div>
-                <p>Cinco frentes de trabalho integradas para uma solução completa de ponta a ponta.</p>
+                <p data-i18n="tasks-sub">Cinco frentes de trabalho integradas para uma solução completa de ponta a ponta.</p>
             </div>
             <div class="tasks-grid">
 
                 <div class="task-card fade-up delay-1">
                     <div class="task-icon"><i class="fa-solid fa-layer-group"></i></div>
-                    <h4>Extração Multi-Wearable</h4>
-                    <p>Camada técnica projetada para extrair e agregar dados de múltiplos wearables em simultâneo.</p>
+                    <h4 data-i18n="task1-h4">Camada de Abstração</h4>
+                    <p data-i18n="task1-p">Desenvolvimento de componentes para abstração dos dados recolhidos, tornando o sistema agnóstico a diferentes dispositivos Wearables.</p>
                 </div>
 
                 <div class="task-card fade-up delay-2">
                     <div class="task-icon"><i class="fa-solid fa-clock-rotate-left"></i></div>
-                    <h4>Sincronização Multimodal</h4>
-                    <p>Alinhamento de diferentes fluxos de dados e correção de desvios de relógio para criar um contexto unificado em tempo real.</p>
+                    <h4 data-i18n="task2-h4">Sincronização Multimodal</h4>
+                    <p data-i18n="task2-p">Alinhamento de diferentes fluxos de dados e correção de desvios de relógio para criar um contexto unificado em tempo real.</p>
                 </div>
 
                 <div class="task-card fade-up delay-3">
                     <div class="task-icon"><i class="fa-solid fa-brain"></i></div>
-                    <h4>Machine Learning</h4>
-                    <p>Recolha de datasets e treino de modelos leves para deteção de intenções — como "Levantar a mão" ou "Dizer STOP".</p>
+                    <h4 data-i18n="task3-h4">Machine Learning</h4>
+                    <p data-i18n="task3-p">Recolha de datasets e treino de modelos leves para deteção de intenções — como "levantar a mão" ou "mudança de direção".</p>
                 </div>
 
                 <div class="task-card fade-up delay-4">
                     <div class="task-icon"><i class="fa-brands fa-android"></i></div>
-                    <h4>Wearable Data Hub</h4>
-                    <p>App Android para descoberta via BLE/Wi-Fi, aquisição de dados dos Wearables e envio para cloud para execução dos modelos de ML.</p>
+                    <h4 data-i18n="task4-h4">Wearable Data Hub</h4>
+                    <p data-i18n="task4-p">App Android para descoberta via BLE/Wi-Fi, aquisição de dados dos Wearables e envio para cloud para execução dos modelos de ML.</p>
                 </div>
 
                 <div class="task-card fade-up delay-5">
                     <div class="task-icon"><i class="fa-solid fa-car-side"></i></div>
-                    <h4>Integração V2X</h4>
-                    <p>Propagação dos resultados para a infraestrutura da cidade inteligente e testes em cenário real com o veículo PIXKIT.</p>
+                    <h4 data-i18n="task5-h4">Integração V2X</h4>
+                    <p data-i18n="task5-p">Propagação dos resultados para a infraestrutura da cidade inteligente e testes em cenário real com o veículo PIXKIT.</p>
                 </div>
 
             </div>
@@ -920,35 +949,35 @@
     <section id="tech">
         <div class="container">
             <div class="section-title fade-up">
-                <h2>Tecnologias</h2>
+                <h2 data-i18n="tech-h2">Tecnologias</h2>
                 <div class="title-bar"></div>
-                <p>Ferramentas e protocolos que sustentam a solução.</p>
+                <p data-i18n="tech-sub">Ferramentas e protocolos que sustentam a solução.</p>
             </div>
             <div class="tech-grid">
                 <div class="tech-item fade-up delay-1">
                     <i class="fa-brands fa-android"></i>
                     <h4>Android</h4>
-                    <p>Data Hub &amp; Mobile Dev</p>
+                    <p data-i18n="tech1-p">Data Hub &amp; Mobile Dev</p>
                 </div>
                 <div class="tech-item fade-up delay-2">
                     <i class="fa-brands fa-bluetooth"></i>
                     <h4>BLE &amp; Wi-Fi</h4>
-                    <p>Comunicação Wearables</p>
+                    <p data-i18n="tech2-p">Comunicação Wearables</p>
                 </div>
                 <div class="tech-item fade-up delay-3">
                     <i class="fa-solid fa-vr-cardboard"></i>
-                    <h4>Wearable sensing devices</h4>
-                    <p>Omi Glasses, Hololens, Wristband</p>
+                    <h4 data-i18n="tech3-h4">Equipamentos XR</h4>
+                    <p>Meta Quest, HoloLens, Omi</p>
                 </div>
                 <div class="tech-item fade-up delay-4">
                     <i class="fa-solid fa-network-wired"></i>
                     <h4>ITS-G5 / C-V2X</h4>
-                    <p>Comunicações Veiculares</p>
+                    <p data-i18n="tech4-p">Comunicações Veiculares</p>
                 </div>
                 <div class="tech-item fade-up delay-5">
                     <i class="fa-brands fa-github"></i>
                     <h4>GitHub</h4>
-                    <p>Versionamento &amp; Hosting</p>
+                    <p data-i18n="tech5-p">Versionamento &amp; Hosting</p>
                 </div>
             </div>
         </div>
@@ -958,38 +987,38 @@
     <section id="roadmap" class="bg-light">
         <div class="container">
             <div class="section-title fade-up">
-                <h2>Roadmap do Projeto</h2>
+                <h2 data-i18n="roadmap-h2">Roadmap do Projeto</h2>
                 <div class="title-bar"></div>
-                <p>O nosso planeamento de execução ao longo do semestre.</p>
+                <p data-i18n="roadmap-sub">O nosso planeamento de execução ao longo do semestre (Semanas 1 a 14).</p>
             </div>
             <div class="tasks-grid">
 
                 <div class="task-card fade-up delay-1">
-                    <span class="milestone-badge">M1 &nbsp;·&nbsp; Semanas 1–3</span>
+                    <span class="milestone-badge" data-i18n="m1-badge">M1 &nbsp;·&nbsp; Semanas 1–3</span>
                     <div class="task-icon"><i class="fa-solid fa-flag"></i></div>
-                    <h4>Inception</h4>
-                    <p>Levantamento de hardware disponível, comunicação inicial entre Wearable e telemóvel, e primeira integração com processamento na cloud.</p>
+                    <h4 data-i18n="m1-h4">Inception</h4>
+                    <p data-i18n="m1-p">Levantamento de hardware disponível, comunicação inicial entre Wearable e telemóvel, e primeira integração com processamento na cloud.</p>
                 </div>
 
                 <div class="task-card fade-up delay-2">
-                    <span class="milestone-badge">M2 &nbsp;·&nbsp; Semanas 4–6</span>
+                    <span class="milestone-badge" data-i18n="m2-badge">M2 &nbsp;·&nbsp; Semanas 4–6</span>
                     <div class="task-icon"><i class="fa-solid fa-mobile-screen"></i></div>
-                    <h4>Elaboration</h4>
-                    <p>Desenvolvimento da aplicação móvel, streaming simultâneo de múltiplos sensores, sincronização de fluxos de dados.</p>
+                    <h4 data-i18n="m2-h4">Elaboration</h4>
+                    <p data-i18n="m2-p">Desenvolvimento da aplicação móvel, streaming simultâneo de múltiplos sensores, sincronização de fluxos de dados e elaboração do relatório de Elaboration.</p>
                 </div>
 
                 <div class="task-card fade-up delay-3">
-                    <span class="milestone-badge">M3 &nbsp;·&nbsp; Semanas 7–9</span>
+                    <span class="milestone-badge" data-i18n="m3-badge">M3 &nbsp;·&nbsp; Semanas 7–9</span>
                     <div class="task-icon"><i class="fa-solid fa-code-merge"></i></div>
-                    <h4>Construction</h4>
-                    <p>Pipeline cloud com modelos de ML, visualização e comunicação V2X via ATCLL, e primeiro protótipo funcional com os Smart Glasses (Omi Glasses).</p>
+                    <h4 data-i18n="m3-h4">Construction</h4>
+                    <p data-i18n="m3-p">Pipeline cloud com modelos de ML, visualização e comunicação V2X via ATCLL, e primeiro protótipo funcional com os óculos XR (HoloLens / Meta Quest).</p>
                 </div>
 
                 <div class="task-card fade-up delay-4">
-                    <span class="milestone-badge">M4 &nbsp;·&nbsp; Semanas 10–14</span>
+                    <span class="milestone-badge" data-i18n="m4-badge">M4 &nbsp;·&nbsp; Semanas 10–14</span>
                     <div class="task-icon"><i class="fa-solid fa-check-double"></i></div>
-                    <h4>Transition</h4>
-                    <p>Feedback ao utilizador em tempo real, integração End-to-End completa, testes reais com o veículo PIXKIT no ATCLL, apresentação final e poster para DETI Students.</p>
+                    <h4 data-i18n="m4-h4">Transition</h4>
+                    <p data-i18n="m4-p">Feedback ao utilizador em tempo real, integração End-to-End completa, testes reais com o veículo PIXKIT no ATCLL, apresentação final e poster para DETI Students.</p>
                 </div>
 
             </div>
@@ -1000,21 +1029,21 @@
     <section id="docs">
         <div class="container">
             <div class="section-title fade-up">
-                <h2>Documentos &amp; Entregáveis</h2>
+                <h2 data-i18n="docs-h2">Documentos &amp; Entregáveis</h2>
                 <div class="title-bar"></div>
-                <p>Acompanhe o nosso progresso através dos relatórios e apresentações.</p>
+                <p data-i18n="docs-sub">Acompanhe o nosso progresso através dos relatórios e apresentações.</p>
             </div>
             <div class="docs-list">
 
                 <div class="doc-item fade-up delay-1">
                     <div class="doc-icon"><i class="fa-solid fa-file-pdf"></i></div>
                     <div class="doc-info">
-                        <h4>Apresentação M1 — Inception</h4>
-                        <p>Apresentação inicial do projeto, contexto, equipa, arquitetura e plano de trabalho.</p>
+                        <h4 data-i18n="doc1-h4">Apresentação M1 — Inception</h4>
+                        <p data-i18n="doc1-p">Apresentação inicial do projeto, contexto, equipa, arquitetura e plano de trabalho.</p>
                     </div>
                     <div class="doc-action">
-                        <a href="docs/Wearables-Programaveis-para-Percecao-Humana-Aquisicao-Multimodal-para-Seguranca-Rodoviaria.pdf" target="_blank" class="btn btn-sm btn-dark">
-                            <i class="fa-solid fa-download"></i> Download PDF
+                        <a href="Wearables-Programaveis-para-Percecao-Humana-Aquisicao-Multimodal-para-Seguranca-Rodoviaria.pdf" target="_blank" class="btn btn-sm btn-dark">
+                            <i class="fa-solid fa-download"></i> <span data-i18n="doc-download">Download PDF</span>
                         </a>
                     </div>
                 </div>
@@ -1022,12 +1051,12 @@
                 <div class="doc-item fade-up delay-2">
                     <div class="doc-icon"><i class="fa-solid fa-file-lines"></i></div>
                     <div class="doc-info">
-                        <h4>Proposta de Projeto — PECI 2025/26</h4>
-                        <p>Documento de proposta oficial com descrição, objetivos, plano de trabalho e infraestrutura ATCLL.</p>
+                        <h4 data-i18n="doc2-h4">Proposta de Projeto — PECI 2025/26</h4>
+                        <p data-i18n="doc2-p">Documento de proposta oficial com descrição, objetivos, plano de trabalho e infraestrutura ATCLL.</p>
                     </div>
                     <div class="doc-action">
-                        <a href="docs/PECI_25_26 - Wearables Proposal.pdf" target="_blank" class="btn btn-sm btn-dark">
-                            <i class="fa-solid fa-download"></i> Download PDF
+                        <a href="PECI_25_26 - Wearables Proposal.pdf" target="_blank" class="btn btn-sm btn-dark">
+                            <i class="fa-solid fa-download"></i> <span data-i18n="doc-download">Download PDF</span>
                         </a>
                     </div>
                 </div>
@@ -1035,33 +1064,33 @@
                 <div class="doc-item doc-soon fade-up delay-3">
                     <div class="doc-icon"><i class="fa-solid fa-file-pdf"></i></div>
                     <div class="doc-info">
-                        <h4>Relatório M2 — Elaboration</h4>
-                        <p>Relatório de requisitos, arquitetura e progresso da Elaboration.</p>
+                        <h4 data-i18n="doc3-h4">Relatório M2 — Elaboration</h4>
+                        <p data-i18n="doc3-p">Relatório de requisitos, arquitetura e progresso da Elaboration.</p>
                     </div>
                     <div class="doc-action">
-                        <span class="badge-soon">Em breve</span>
+                        <span class="badge-soon" data-i18n="badge-soon">Em breve</span>
                     </div>
                 </div>
 
                 <div class="doc-item doc-soon fade-up delay-4">
                     <div class="doc-icon"><i class="fa-solid fa-file-pdf"></i></div>
                     <div class="doc-info">
-                        <h4>Apresentação M3 — Construction</h4>
-                        <p>Demonstração do protótipo e resultados da fase de Construction.</p>
+                        <h4 data-i18n="doc4-h4">Apresentação M3 — Construction</h4>
+                        <p data-i18n="doc4-p">Demonstração do protótipo e resultados da fase de Construction.</p>
                     </div>
                     <div class="doc-action">
-                        <span class="badge-soon">Em breve</span>
+                        <span class="badge-soon" data-i18n="badge-soon">Em breve</span>
                     </div>
                 </div>
 
                 <div class="doc-item doc-soon fade-up delay-5">
                     <div class="doc-icon"><i class="fa-solid fa-file-pdf"></i></div>
                     <div class="doc-info">
-                        <h4>Poster M4 — DETI Students</h4>
-                        <p>Poster científico apresentado no evento final DETI Students.</p>
+                        <h4 data-i18n="doc5-h4">Poster M4 — DETI Students</h4>
+                        <p data-i18n="doc5-p">Poster científico apresentado no evento final DETI Students.</p>
                     </div>
                     <div class="doc-action">
-                        <span class="badge-soon">Em breve</span>
+                        <span class="badge-soon" data-i18n="badge-soon">Em breve</span>
                     </div>
                 </div>
 
@@ -1073,45 +1102,45 @@
     <section id="related" class="bg-light">
         <div class="container">
             <div class="section-title fade-up">
-                <h2>Trabalhos Relacionados</h2>
+                <h2 data-i18n="related-h2">Trabalhos Relacionados</h2>
                 <div class="title-bar"></div>
-                <p>Projetos, infraestruturas e artigos que servem de base à nossa investigação.</p>
+                <p data-i18n="related-sub">Projetos, infraestruturas e artigos que servem de base à nossa investigação.</p>
             </div>
             <div class="related-grid">
 
                 <div class="related-card fade-up delay-1">
-                    <span class="related-tag tag-infra">Infraestrutura</span>
-                    <h4>Aveiro Tech City Living Lab (ATCLL)</h4>
-                    <p>Infraestrutura urbana de teste em Aveiro que integra comunicação V2X, ITS-G5 e Edge Computing, servindo de ambiente de validação para os resultados do projeto. Gerida pelo grupo NAP do Instituto de Telecomunicações.</p>
+                    <span class="related-tag tag-infra" data-i18n="rel1-tag">Infraestrutura</span>
+                    <h4 data-i18n="rel1-h4">Aveiro Tech City Living Lab (ATCLL)</h4>
+                    <p data-i18n="rel1-p">Infraestrutura urbana de teste em Aveiro que integra comunicação V2X, ITS-G5 e Edge Computing, servindo de ambiente de validação para os resultados do projeto. Gerida pelo grupo NAP do Instituto de Telecomunicações.</p>
                     <div class="related-footer">
                         <span class="related-source">
-                            <i class="fa-solid fa-building-columns"></i> Universidade de Aveiro / IT
+                            <i class="fa-solid fa-building-columns"></i> <span data-i18n="rel1-src">Universidade de Aveiro / IT</span>
                         </span>
-                        <a href="docs/PECI_25_26 - Wearables Proposal.pdf" target="_blank" class="btn btn-sm btn-dark">Ler mais</a>
+                        <a href="PECI_25_26 - Wearables Proposal.pdf" target="_blank" class="btn btn-sm btn-dark"><span data-i18n="btn-read-more">Ler mais</span></a>
                     </div>
                 </div>
 
                 <div class="related-card fade-up delay-2">
-                    <span class="related-tag tag-paper">Artigo Científico</span>
-                    <h4>SafeARCross: AR Collision Warnings &amp; Virtual Traffic Lights for Pedestrian Safety</h4>
-                    <p>Sistema de realidade aumentada integrado com V2X e ATCLL que fornece avisos de colisão e semáforos virtuais para peões via HoloLens 2. Estudo com 20 utilizadores. AutomotiveUI '24, Stanford.</p>
+                    <span class="related-tag tag-paper" data-i18n="rel2-tag">Artigo Científico</span>
+                    <h4 data-i18n="rel2-h4">SafeARCross: AR Collision Warnings &amp; Virtual Traffic Lights for Pedestrian Safety</h4>
+                    <p data-i18n="rel2-p">Sistema de realidade aumentada integrado com V2X e ATCLL que fornece avisos de colisão e semáforos virtuais para peões via HoloLens 2. Estudo com 20 utilizadores. AutomotiveUI '24, Stanford.</p>
                     <div class="related-footer">
                         <span class="related-source">
-                            <i class="fa-solid fa-book-open"></i> Clérigo, Rito, Sargento et al. &mdash; 2024
+                            <i class="fa-solid fa-book-open"></i> <span data-i18n="rel2-src">Clérigo, Rito, Sargento et al. &mdash; 2024</span>
                         </span>
-                        <a href="docs/3640792.3675734.pdf" target="_blank" class="btn btn-sm btn-dark">Ler mais</a>
+                        <a href="3640792.3675734.pdf" target="_blank" class="btn btn-sm btn-dark"><span data-i18n="btn-read-more">Ler mais</span></a>
                     </div>
                 </div>
 
                 <div class="related-card fade-up delay-3">
-                    <span class="related-tag tag-paper">Demo IEEE VNC 2025</span>
-                    <h4>Integrating AR Headsets with Mobile Object Detection to Extend Road Sensing and VRU Safety</h4>
-                    <p>Demonstração de um hub de sensing móvel (Android + HoloLens 2 + NVIDIA Jetson) integrado no ATCLL via ITS-G5. Deteção de objetos em tempo real com latência inferior a 300 ms e transmissão V2X. IEEE VNC 2025.</p>
+                    <span class="related-tag tag-paper" data-i18n="rel3-tag">Demo IEEE VNC 2025</span>
+                    <h4 data-i18n="rel3-h4">Integrating AR Headsets with Mobile Object Detection to Extend Road Sensing and VRU Safety</h4>
+                    <p data-i18n="rel3-p">Demonstração de um hub de sensing móvel (Android + HoloLens 2 + NVIDIA Jetson) integrado no ATCLL via ITS-G5. Deteção de objetos em tempo real com latência inferior a 300 ms e transmissão V2X. IEEE VNC 2025.</p>
                     <div class="related-footer">
                         <span class="related-source">
-                            <i class="fa-solid fa-book-open"></i> G. Silva, Clérigo, Rito, Sargento &mdash; 2025
+                            <i class="fa-solid fa-book-open"></i> <span data-i18n="rel3-src">G. Silva, Clérigo, Rito, Sargento &mdash; 2025</span>
                         </span>
-                        <a href="docs/Demo_Integrating_AR_headsets_with_Mobile_Object_Detection_to_extend_road_sensing_and_VRU_safety.pdf" target="_blank" class="btn btn-sm btn-dark">Ler mais</a>
+                        <a href="Demo_Integrating_AR_headsets_with_Mobile_Object_Detection_to_extend_road_sensing_and_VRU_safety.pdf" target="_blank" class="btn btn-sm btn-dark"><span data-i18n="btn-read-more">Ler mais</span></a>
                     </div>
                 </div>
 
@@ -1123,16 +1152,16 @@
     <section id="team">
         <div class="container">
             <div class="section-title fade-up">
-                <h2>A Nossa Equipa</h2>
+                <h2 data-i18n="team-h2">A Nossa Equipa</h2>
                 <div class="title-bar"></div>
-                <p>5 estudantes de Engenharia de Computadores e Informática — UA, 2025/26.</p>
+                <p data-i18n="team-sub">5 estudantes de Engenharia de Computadores e Informática — UA, 2025/26.</p>
             </div>
             <div class="team-grid">
 
                 <div class="team-member fade-up delay-1">
                     <img src="https://ui-avatars.com/api/?name=Guilherme+Tavares&background=4a6580&color=fff&size=200&bold=true" alt="Guilherme Tavares">
                     <h4>Guilherme Tavares</h4>
-                    <p class="role">Membro da Equipa</p>
+                    <p class="role" data-i18n="team-role">Membro da Equipa</p>
                     <div class="social-links">
                         <a href="https://github.com/T4V4RES" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
                     </div>
@@ -1141,7 +1170,7 @@
                 <div class="team-member fade-up delay-2">
                     <img src="https://ui-avatars.com/api/?name=Pedro+Laredo&background=4a6580&color=fff&size=200&bold=true" alt="Pedro Laredo">
                     <h4>Pedro Laredo</h4>
-                    <p class="role">Membro da Equipa</p>
+                    <p class="role" data-i18n="team-role">Membro da Equipa</p>
                     <div class="social-links">
                         <a href="https://github.com/Pedro-Laredo" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
                     </div>
@@ -1150,7 +1179,7 @@
                 <div class="team-member fade-up delay-3">
                     <img src="https://ui-avatars.com/api/?name=Joao+Abrunhosa&background=4a6580&color=fff&size=200&bold=true" alt="João Abrunhosa">
                     <h4>João Abrunhosa</h4>
-                    <p class="role">Membro da Equipa</p>
+                    <p class="role" data-i18n="team-role">Membro da Equipa</p>
                     <div class="social-links">
                         <a href="https://github.com/JoaoAbrunhosa" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
                     </div>
@@ -1159,7 +1188,7 @@
                 <div class="team-member fade-up delay-4">
                     <img src="https://ui-avatars.com/api/?name=Rafael+Soares&background=4a6580&color=fff&size=200&bold=true" alt="Rafael Soares">
                     <h4>Rafael Soares</h4>
-                    <p class="role">Membro da Equipa</p>
+                    <p class="role" data-i18n="team-role">Membro da Equipa</p>
                     <div class="social-links">
                         <a href="https://github.com/rafaelfelicianoS" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
                     </div>
@@ -1168,7 +1197,7 @@
                 <div class="team-member fade-up delay-5">
                     <img src="https://ui-avatars.com/api/?name=Tomas+Cruz&background=4a6580&color=fff&size=200&bold=true" alt="Tomás Cruz">
                     <h4>Tomás Cruz</h4>
-                    <p class="role">Membro da Equipa</p>
+                    <p class="role" data-i18n="team-role">Membro da Equipa</p>
                     <div class="social-links">
                         <a href="https://github.com/TomasCruz39" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
                     </div>
@@ -1182,9 +1211,9 @@
     <section id="advisors" class="bg-light">
         <div class="container">
             <div class="section-title fade-up">
-                <h2>Orientadores</h2>
+                <h2 data-i18n="adv-h2">Orientadores</h2>
                 <div class="title-bar"></div>
-                <p>Investigadores que acompanham e orientam o projeto.</p>
+                <p data-i18n="adv-sub">Investigadores que acompanham e orientam o projeto.</p>
             </div>
             <div class="advisor-grid">
 
@@ -1192,28 +1221,28 @@
                     <img src="https://ui-avatars.com/api/?name=Pedro+Rito&background=374151&color=fff&size=200&bold=true" alt="Pedro Rito">
                     <h4>Pedro Rito</h4>
                     <p>Universidade de Aveiro / IT</p>
-                    <span class="advisor-badge">Orientador</span>
+                    <span class="advisor-badge" data-i18n="adv-badge">Orientador</span>
                 </div>
 
                 <div class="advisor-card fade-up delay-2">
                     <img src="https://ui-avatars.com/api/?name=Susana+Sargento&background=374151&color=fff&size=200&bold=true" alt="Susana Sargento">
                     <h4>Susana Sargento</h4>
                     <p>Universidade de Aveiro / IT</p>
-                    <span class="advisor-badge">Orientadora</span>
+                    <span class="advisor-badge" data-i18n="adv-badge-f">Orientadora</span>
                 </div>
 
                 <div class="advisor-card fade-up delay-3">
                     <img src="https://ui-avatars.com/api/?name=Andre+Clerigo&background=374151&color=fff&size=200&bold=true" alt="André Clérigo">
                     <h4>André Clérigo</h4>
                     <p>Instituto de Telecomunicações</p>
-                    <span class="advisor-badge">Orientador</span>
+                    <span class="advisor-badge" data-i18n="adv-badge">Orientador</span>
                 </div>
 
                 <div class="advisor-card fade-up delay-4">
                     <img src="https://ui-avatars.com/api/?name=Goncalo+Silva&background=374151&color=fff&size=200&bold=true" alt="Gonçalo Silva">
                     <h4>Gonçalo Silva</h4>
                     <p>Instituto de Telecomunicações</p>
-                    <span class="advisor-badge">Orientador</span>
+                    <span class="advisor-badge" data-i18n="adv-badge">Orientador</span>
                 </div>
 
             </div>
@@ -1225,32 +1254,32 @@
         <div class="container">
             <div class="footer-inner">
                 <div class="footer-logo">PECI | Wearables VRU</div>
-                <p>Projeto de Engenharia de Computadores e Informática — 2025/2026</p>
+                <p data-i18n="footer-p1">Projeto de Engenharia de Computadores e Informática — 2025/2026</p>
                 <div class="footer-divider"></div>
-                <p>© 2025/2026 &mdash; Todos os direitos reservados.</p>
+                <p data-i18n="footer-p2">© 2025/2026 &mdash; Todos os direitos reservados.</p>
 
                 <!-- Logos institucionais -->
                 <div class="footer-logos">
                     <div class="inst-logo">
-                        <img src="img/ua.png" alt="Universidade de Aveiro" class="inst-logo-img">
+                        <img src="ua.png" alt="Universidade de Aveiro" class="inst-logo-img-rect">
                         <div class="inst-logo-text">
-                            <strong>Universidade de Aveiro</strong>
-                            <span>DETI — Dep. Eletrónica e Telecomunicações</span>
+                            <strong data-i18n="footer-ua-strong">Universidade de Aveiro</strong>
+                            <span data-i18n="footer-ua-span">DETI — Dep. Eletrónica e Telecomunicações</span>
                         </div>
                     </div>
                     <div class="footer-sep"></div>
                     <div class="inst-logo">
-                        <img src="img/it.png" alt="Instituto de Telecomunicações" class="inst-logo-img">
+                        <img src="it.png" alt="Instituto de Telecomunicações" class="inst-logo-img">
                         <div class="inst-logo-text">
                             <strong>Instituto de Telecomunicações</strong>
-                            <span>Pólo de Aveiro</span>
+                            <span data-i18n="footer-it-span">Pólo de Aveiro</span>
                         </div>
                     </div>
                     <div class="footer-sep"></div>
                     <div class="inst-logo">
-                        <img src="img/nap.png" alt="Grupo NAP" class="inst-logo-img">
+                        <img src="nap.png" alt="Grupo NAP" class="inst-logo-img-rect">
                         <div class="inst-logo-text">
-                            <strong>Grupo NAP</strong>
+                            <strong data-i18n="footer-nap-strong">Grupo NAP</strong>
                             <span>Networks &amp; Applications — IT Aveiro</span>
                         </div>
                     </div>
@@ -1261,6 +1290,227 @@
 
     <!-- ── JavaScript ──────────────────────────────────────── -->
     <script>
+        /* ── Traduções ──────────────────────────────────────── */
+        const i18n = {
+            pt: {
+                'nav-about':   'Sobre',
+                'nav-tasks':   'Tarefas',
+                'nav-tech':    'Tecnologias',
+                'nav-roadmap': 'Roadmap',
+                'nav-docs':    'Documentos',
+                'nav-related': 'Trabalhos Relacionados',
+                'nav-team':    'Equipa',
+                'hero-h1':     'Wearables Programáveis para<br>Perceção Humana',
+                'hero-p':      'Aquisição multimodal baseada em Wearables para garantir a segurança de peões e utilizadores vulneráveis (VRUs) em cidades inteligentes.',
+                'hero-cta1':   'Descobrir o Projeto',
+                'hero-cta2':   'A Equipa',
+                'hero-scroll': 'scroll',
+                'about-h2':    'Problema &amp; Oportunidade',
+                'about-sub':   'Porquê Wearables? Porque o utilizador vulnerável já está no centro do problema.',
+                'about-p1':    'A procura por <strong>Cidades Inteligentes</strong> e condução autónoma está a crescer rapidamente. No entanto, os sistemas tradicionais baseados em infraestrutura — câmaras e radares fixos — revelam-se frequentemente insuficientes devido a <strong>cobertura limitada, pontos cegos e custos elevados</strong> de implementação e manutenção.',
+                'about-p2':    'O nosso projeto aborda este problema diretamente a partir da perspetiva do utilizador vulnerável (peão / ciclista). Aproveitando os sensores presentes nos <strong>Wearables</strong> que já usamos quotidianamente, é possível detetar gestos, postura e atenção, convertendo-os em "intenções" transmitidas em tempo real para os veículos conectados.',
+                'hl1-h4':      'Pontos Cegos &amp; Cobertura',
+                'hl1-p':       'Infraestrutura estática não cobre todos os cenários de risco urbano.',
+                'hl2-h4':      'Processamento na Cloud',
+                'hl2-p':       'Dados anonimizados enviados para cloud com maior capacidade computacional para inferência dos modelos de ML.',
+                'hl3-h4':      'Integração V2X',
+                'hl3-p':       'As intenções detetadas são propagadas em tempo real via ITS-G5 / C-V2X.',
+                'privacy-h4':  'Privacidade &amp; Conformidade RGPD',
+                'privacy-p':   'Os dados recolhidos — incluindo gestos e postura captados pelos Wearables — são <strong>anonimizados na origem</strong>, antes de qualquer transmissão. Os dados anonimizados são enviados para uma <strong>infraestrutura cloud</strong> para processamento pelos modelos de ML, dado o maior poder computacional disponível face ao dispositivo móvel. Nenhum dado pessoal identificável é transmitido ou armazenado externamente. Todo o tratamento de informação está em conformidade com o <strong>Regulamento Geral sobre a Proteção de Dados (RGPD / GDPR)</strong>, garantindo a privacidade e os direitos dos participantes em todas as fases do projeto.',
+                'tasks-h2':    'Tarefas do Projeto',
+                'tasks-sub':   'Cinco frentes de trabalho integradas para uma solução completa de ponta a ponta.',
+                'task1-h4':    'Camada de Abstração',
+                'task1-p':     'Desenvolvimento de componentes para abstração dos dados recolhidos, tornando o sistema agnóstico a diferentes dispositivos Wearables.',
+                'task2-h4':    'Sincronização Multimodal',
+                'task2-p':     'Alinhamento de diferentes fluxos de dados e correção de desvios de relógio para criar um contexto unificado em tempo real.',
+                'task3-h4':    'Machine Learning',
+                'task3-p':     'Recolha de datasets e treino de modelos leves para deteção de intenções — como "levantar a mão" ou "mudança de direção".',
+                'task4-h4':    'Wearable Data Hub',
+                'task4-p':     'App Android para descoberta via BLE/Wi-Fi, aquisição de dados dos Wearables e envio para cloud para execução dos modelos de ML.',
+                'task5-h4':    'Integração V2X',
+                'task5-p':     'Propagação dos resultados para a infraestrutura da cidade inteligente e testes em cenário real com o veículo PIXKIT.',
+                'tech-h2':     'Tecnologias',
+                'tech-sub':    'Ferramentas e protocolos que sustentam a solução.',
+                'tech1-p':     'Data Hub &amp; Mobile Dev',
+                'tech2-p':     'Comunicação Wearables',
+                'tech3-h4':    'Equipamentos XR',
+                'tech4-p':     'Comunicações Veiculares',
+                'tech5-p':     'Versionamento &amp; Hosting',
+                'roadmap-h2':  'Roadmap do Projeto',
+                'roadmap-sub': 'O nosso planeamento de execução ao longo do semestre (Semanas 1 a 14).',
+                'm1-badge':    'M1 &nbsp;·&nbsp; Semanas 1–3',
+                'm1-h4':       'Inception',
+                'm1-p':        'Levantamento de hardware disponível, comunicação inicial entre Wearable e telemóvel, e primeira integração com processamento na cloud.',
+                'm2-badge':    'M2 &nbsp;·&nbsp; Semanas 4–6',
+                'm2-h4':       'Elaboration',
+                'm2-p':        'Desenvolvimento da aplicação móvel, streaming simultâneo de múltiplos sensores, sincronização de fluxos de dados e elaboração do relatório de Elaboration.',
+                'm3-badge':    'M3 &nbsp;·&nbsp; Semanas 7–9',
+                'm3-h4':       'Construction',
+                'm3-p':        'Pipeline cloud com modelos de ML, visualização e comunicação V2X via ATCLL, e primeiro protótipo funcional com os óculos XR (HoloLens / Meta Quest).',
+                'm4-badge':    'M4 &nbsp;·&nbsp; Semanas 10–14',
+                'm4-h4':       'Transition',
+                'm4-p':        'Feedback ao utilizador em tempo real, integração End-to-End completa, testes reais com o veículo PIXKIT no ATCLL, apresentação final e poster para DETI Students.',
+                'docs-h2':     'Documentos &amp; Entregáveis',
+                'docs-sub':    'Acompanhe o nosso progresso através dos relatórios e apresentações.',
+                'doc1-h4':     'Apresentação M1 — Inception',
+                'doc1-p':      'Apresentação inicial do projeto, contexto, equipa, arquitetura e plano de trabalho.',
+                'doc-download':'Download PDF',
+                'doc2-h4':     'Proposta de Projeto — PECI 2025/26',
+                'doc2-p':      'Documento de proposta oficial com descrição, objetivos, plano de trabalho e infraestrutura ATCLL.',
+                'doc3-h4':     'Relatório M2 — Elaboration',
+                'doc3-p':      'Relatório de requisitos, arquitetura e progresso da Elaboration.',
+                'doc4-h4':     'Apresentação M3 — Construction',
+                'doc4-p':      'Demonstração do protótipo e resultados da fase de Construction.',
+                'doc5-h4':     'Poster M4 — DETI Students',
+                'doc5-p':      'Poster científico apresentado no evento final DETI Students.',
+                'badge-soon':  'Em breve',
+                'related-h2':  'Trabalhos Relacionados',
+                'related-sub': 'Projetos, infraestruturas e artigos que servem de base à nossa investigação.',
+                'rel1-tag':    'Infraestrutura',
+                'rel1-h4':     'Aveiro Tech City Living Lab (ATCLL)',
+                'rel1-p':      'Infraestrutura urbana de teste em Aveiro que integra comunicação V2X, ITS-G5 e Edge Computing, servindo de ambiente de validação para os resultados do projeto. Gerida pelo grupo NAP do Instituto de Telecomunicações.',
+                'rel1-src':    'Universidade de Aveiro / IT',
+                'rel2-tag':    'Artigo Científico',
+                'rel2-h4':     'SafeARCross: AR Collision Warnings &amp; Virtual Traffic Lights for Pedestrian Safety',
+                'rel2-p':      'Sistema de realidade aumentada integrado com V2X e ATCLL que fornece avisos de colisão e semáforos virtuais para peões via HoloLens 2. Estudo com 20 utilizadores. AutomotiveUI \'24, Stanford.',
+                'rel2-src':    'Clérigo, Rito, Sargento et al. &mdash; 2024',
+                'rel3-tag':    'Demo IEEE VNC 2025',
+                'rel3-h4':     'Integrating AR Headsets with Mobile Object Detection to Extend Road Sensing and VRU Safety',
+                'rel3-p':      'Demonstração de um hub de sensing móvel (Android + HoloLens 2 + NVIDIA Jetson) integrado no ATCLL via ITS-G5. Deteção de objetos em tempo real com latência inferior a 300 ms e transmissão V2X. IEEE VNC 2025.',
+                'rel3-src':    'G. Silva, Clérigo, Rito, Sargento &mdash; 2025',
+                'btn-read-more':'Ler mais',
+                'team-h2':     'A Nossa Equipa',
+                'team-sub':    '5 estudantes de Engenharia de Computadores e Informática — UA, 2025/26.',
+                'team-role':   'Membro da Equipa',
+                'adv-h2':      'Orientadores',
+                'adv-sub':     'Investigadores que acompanham e orientam o projeto.',
+                'adv-badge':   'Orientador',
+                'adv-badge-f': 'Orientadora',
+                'footer-p1':   'Projeto de Engenharia de Computadores e Informática — 2025/2026',
+                'footer-p2':   '© 2025/2026 &mdash; Todos os direitos reservados.',
+                'footer-ua-strong': 'Universidade de Aveiro',
+                'footer-ua-span':   'DETI — Dep. Eletrónica e Telecomunicações',
+                'footer-it-span':   'Pólo de Aveiro',
+                'footer-nap-strong':'Grupo NAP',
+            },
+            en: {
+                'nav-about':   'About',
+                'nav-tasks':   'Tasks',
+                'nav-tech':    'Technologies',
+                'nav-roadmap': 'Roadmap',
+                'nav-docs':    'Documents',
+                'nav-related': 'Related Work',
+                'nav-team':    'Team',
+                'hero-h1':     'Programmable Wearables for<br>Human Perception',
+                'hero-p':      'Multimodal Wearable-based acquisition to ensure the safety of pedestrians and vulnerable road users (VRUs) in smart cities.',
+                'hero-cta1':   'Discover the Project',
+                'hero-cta2':   'The Team',
+                'hero-scroll': 'scroll',
+                'about-h2':    'Problem &amp; Opportunity',
+                'about-sub':   'Why Wearables? Because the vulnerable user is already at the center of the problem.',
+                'about-p1':    'The demand for <strong>Smart Cities</strong> and autonomous driving is growing rapidly. However, traditional infrastructure-based systems — fixed cameras and radars — often prove insufficient due to <strong>limited coverage, blind spots, and high deployment and maintenance costs</strong>.',
+                'about-p2':    'Our project addresses this problem directly from the perspective of the vulnerable road user (pedestrian / cyclist). By leveraging the sensors already present in <strong>Wearables</strong> we use daily, it is possible to detect gestures, posture, and attention, converting them into "intentions" transmitted in real time to connected vehicles.',
+                'hl1-h4':      'Blind Spots &amp; Coverage',
+                'hl1-p':       'Static infrastructure does not cover all urban risk scenarios.',
+                'hl2-h4':      'Cloud Processing',
+                'hl2-p':       'Anonymised data sent to the cloud with greater computational capacity for ML model inference.',
+                'hl3-h4':      'V2X Integration',
+                'hl3-p':       'Detected intentions are propagated in real time via ITS-G5 / C-V2X.',
+                'privacy-h4':  'Privacy &amp; GDPR Compliance',
+                'privacy-p':   'The data collected — including gestures and posture captured by Wearables — are <strong>anonymised at the source</strong>, before any transmission. The anonymised data are sent to a <strong>cloud infrastructure</strong> for processing by ML models, given the greater computational power available compared to a mobile device. No personally identifiable data is transmitted or stored externally. All data processing complies with the <strong>General Data Protection Regulation (GDPR)</strong>, ensuring the privacy and rights of participants at all stages of the project.',
+                'tasks-h2':    'Project Tasks',
+                'tasks-sub':   'Five integrated workstreams for a complete end-to-end solution.',
+                'task1-h4':    'Abstraction Layer',
+                'task1-p':     'Development of components to abstract collected data, making the system agnostic to different Wearable devices.',
+                'task2-h4':    'Multimodal Synchronisation',
+                'task2-p':     'Alignment of different data streams and correction of clock drift to create a unified real-time context.',
+                'task3-h4':    'Machine Learning',
+                'task3-p':     'Dataset collection and training of lightweight models for intent detection — such as "raise hand" or "change of direction".',
+                'task4-h4':    'Wearable Data Hub',
+                'task4-p':     'Android app for BLE/Wi-Fi discovery, data acquisition from Wearables, and transmission to the cloud for ML model execution.',
+                'task5-h4':    'V2X Integration',
+                'task5-p':     'Propagation of results to the smart city infrastructure and real-scenario tests with the PIXKIT vehicle.',
+                'tech-h2':     'Technologies',
+                'tech-sub':    'Tools and protocols underpinning the solution.',
+                'tech1-p':     'Data Hub &amp; Mobile Dev',
+                'tech2-p':     'Wearable Communication',
+                'tech3-h4':    'XR Devices',
+                'tech4-p':     'Vehicular Communications',
+                'tech5-p':     'Versioning &amp; Hosting',
+                'roadmap-h2':  'Project Roadmap',
+                'roadmap-sub': 'Our execution plan over the semester (Weeks 1 to 14).',
+                'm1-badge':    'M1 &nbsp;·&nbsp; Weeks 1–3',
+                'm1-h4':       'Inception',
+                'm1-p':        'Hardware survey, initial Wearable-to-phone communication, and first integration with cloud processing.',
+                'm2-badge':    'M2 &nbsp;·&nbsp; Weeks 4–6',
+                'm2-h4':       'Elaboration',
+                'm2-p':        'Mobile application development, simultaneous streaming of multiple sensors, data stream synchronisation, and Elaboration report.',
+                'm3-badge':    'M3 &nbsp;·&nbsp; Weeks 7–9',
+                'm3-h4':       'Construction',
+                'm3-p':        'Cloud pipeline with ML models, V2X visualisation and communication via ATCLL, and first functional prototype with XR glasses (HoloLens / Meta Quest).',
+                'm4-badge':    'M4 &nbsp;·&nbsp; Weeks 10–14',
+                'm4-h4':       'Transition',
+                'm4-p':        'Real-time user feedback, complete End-to-End integration, real-world tests with the PIXKIT vehicle at ATCLL, final presentation, and DETI Students poster.',
+                'docs-h2':     'Documents &amp; Deliverables',
+                'docs-sub':    'Follow our progress through reports and presentations.',
+                'doc1-h4':     'M1 Presentation — Inception',
+                'doc1-p':      'Initial project presentation: context, team, architecture, and work plan.',
+                'doc-download':'Download PDF',
+                'doc2-h4':     'Project Proposal — PECI 2025/26',
+                'doc2-p':      'Official proposal document with description, objectives, work plan, and ATCLL infrastructure.',
+                'doc3-h4':     'M2 Report — Elaboration',
+                'doc3-p':      'Requirements, architecture, and Elaboration progress report.',
+                'doc4-h4':     'M3 Presentation — Construction',
+                'doc4-p':      'Prototype demonstration and Construction phase results.',
+                'doc5-h4':     'M4 Poster — DETI Students',
+                'doc5-p':      'Scientific poster presented at the DETI Students final event.',
+                'badge-soon':  'Coming soon',
+                'related-h2':  'Related Work',
+                'related-sub': 'Projects, infrastructures, and papers that form the basis of our research.',
+                'rel1-tag':    'Infrastructure',
+                'rel1-h4':     'Aveiro Tech City Living Lab (ATCLL)',
+                'rel1-p':      'Urban test infrastructure in Aveiro integrating V2X communication, ITS-G5, and Edge Computing, serving as a validation environment for project results. Managed by the NAP group at the Instituto de Telecomunicações.',
+                'rel1-src':    'Universidade de Aveiro / IT',
+                'rel2-tag':    'Scientific Paper',
+                'rel2-h4':     'SafeARCross: AR Collision Warnings &amp; Virtual Traffic Lights for Pedestrian Safety',
+                'rel2-p':      'Augmented reality system integrated with V2X and ATCLL that provides collision warnings and virtual traffic lights for pedestrians via HoloLens 2. Study with 20 users. AutomotiveUI \'24, Stanford.',
+                'rel2-src':    'Clérigo, Rito, Sargento et al. &mdash; 2024',
+                'rel3-tag':    'IEEE VNC 2025 Demo',
+                'rel3-h4':     'Integrating AR Headsets with Mobile Object Detection to Extend Road Sensing and VRU Safety',
+                'rel3-p':      'Demonstration of a mobile sensing hub (Android + HoloLens 2 + NVIDIA Jetson) integrated in ATCLL via ITS-G5. Real-time object detection with latency below 300 ms and V2X transmission. IEEE VNC 2025.',
+                'rel3-src':    'G. Silva, Clérigo, Rito, Sargento &mdash; 2025',
+                'btn-read-more':'Read more',
+                'team-h2':     'Our Team',
+                'team-sub':    '5 Computer and Informatics Engineering students — UA, 2025/26.',
+                'team-role':   'Team Member',
+                'adv-h2':      'Advisors',
+                'adv-sub':     'Researchers supervising and guiding the project.',
+                'adv-badge':   'Supervisor',
+                'adv-badge-f': 'Supervisor',
+                'footer-p1':   'Computer and Informatics Engineering Project — 2025/2026',
+                'footer-p2':   '© 2025/2026 &mdash; All rights reserved.',
+                'footer-ua-strong': 'University of Aveiro',
+                'footer-ua-span':   'DETI — Dept. of Electronics and Telecommunications',
+                'footer-it-span':   'Aveiro Campus',
+                'footer-nap-strong':'NAP Group',
+            }
+        };
+
+        let currentLang = localStorage.getItem('lang') || 'pt';
+
+        function setLang(lang) {
+            currentLang = lang;
+            document.documentElement.lang = lang === 'pt' ? 'pt-PT' : 'en';
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (i18n[lang] && i18n[lang][key] !== undefined) {
+                    el.innerHTML = i18n[lang][key];
+                }
+            });
+            langToggle.textContent = lang === 'pt' ? 'EN' : 'PT';
+            localStorage.setItem('lang', lang);
+        }
+
         /* Scroll-reveal via IntersectionObserver */
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -1280,12 +1530,17 @@
             navToggle.classList.toggle('open');
             navLinksEl.classList.toggle('open');
         });
-        /* Fechar menu ao clicar num link */
         navLinksEl.querySelectorAll('a').forEach(a => {
             a.addEventListener('click', () => {
                 navToggle.classList.remove('open');
                 navLinksEl.classList.remove('open');
             });
+        });
+
+        /* Botão de idioma */
+        const langToggle = document.getElementById('langToggle');
+        langToggle.addEventListener('click', () => {
+            setLang(currentLang === 'pt' ? 'en' : 'pt');
         });
 
         /* Nav: compacta ao fazer scroll + realça link ativo */
@@ -1295,7 +1550,6 @@
 
         window.addEventListener('scroll', () => {
             navbar.classList.toggle('scrolled', window.scrollY > 60);
-
             let current = '';
             sections.forEach(sec => {
                 if (window.scrollY >= sec.offsetTop - 120) current = sec.id;
@@ -1304,6 +1558,9 @@
                 a.classList.toggle('active', a.getAttribute('href') === '#' + current);
             });
         }, { passive: true });
+
+        /* Aplicar idioma guardado ao carregar a página */
+        if (currentLang === 'en') setLang('en');
     </script>
 
 </body>
