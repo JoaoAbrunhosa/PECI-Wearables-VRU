@@ -97,14 +97,14 @@
             align-items: center;
             gap: 6px;
         }
-        .nav-links { display: flex; gap: 4px; flex-wrap: wrap; justify-content: flex-end; }
+        .nav-links { display: flex; gap: 2px; flex-wrap: nowrap; justify-content: flex-end; }
         .nav-links a {
             color: rgba(255,255,255,0.65);
-            padding: 5px 11px;
-            font-size: 0.78rem;
+            padding: 5px 8px;
+            font-size: 0.72rem;
             font-weight: 500;
             text-transform: uppercase;
-            letter-spacing: 0.6px;
+            letter-spacing: 0.4px;
             border-radius: 6px;
             transition: background var(--transition), color var(--transition);
             white-space: nowrap;
@@ -1337,15 +1337,7 @@
                 <div class="demo-info">
                     <div>
                         <h3 data-i18n="demo-title">Sistema em Ação</h3>
-                        <p data-i18n="demo-desc">Demonstração do pipeline completo: Omi Glasses a capturar áudio e vídeo, deteção de objetos com YOLOv8, estimativa de profundidade com Depth Anything, transcrição com Whisper e alertas hápticos no Brilliant Sole em tempo real.</p>
-                    </div>
-                    <div class="demo-badges">
-                        <span class="demo-badge">YOLOv8</span>
-                        <span class="demo-badge">Depth Anything</span>
-                        <span class="demo-badge">Whisper</span>
-                        <span class="demo-badge">Brilliant Sole</span>
-                        <span class="demo-badge">Omi Glasses</span>
-                        <span class="demo-badge">BLE</span>
+                        <p data-i18n="demo-desc">Vê o sistema a funcionar na prática — um peão equipado com óculos inteligentes e uma pulseira a navegar num ambiente urbano com alertas em tempo real sobre o que o rodeia.</p>
                     </div>
                     <a href="#docs" class="btn btn-primary" style="width:fit-content">
                         <i class="fa-solid fa-file-arrow-down"></i>
@@ -1380,7 +1372,7 @@
                 </div>
 
                 <div class="doc-item fade-up delay-2">
-                    <div class="doc-icon"><i class="fa-solid fa-file-pdf"></i></div>
+                    <div class="doc-icon"><i class="fa-solid fa-file-lines"></i></div>
                     <div class="doc-info">
                         <h4 data-i18n="doc0b-h4">Proposta de Projeto — PECI 2025/26</h4>
                         <p data-i18n="doc0b-p">Documento de proposta oficial com descrição, objetivos, plano de trabalho e infraestrutura ATCLL.</p>
@@ -1392,29 +1384,31 @@
                     </div>
                 </div>
 
-                <div class="doc-item fade-up delay-1">
-                    <div class="doc-icon"><i class="fa-solid fa-file-pdf"></i></div>
+                <div class="doc-item doc-soon fade-up delay-1">
+                    <div class="doc-icon"><i class="fa-solid fa-file-powerpoint"></i></div>
                     <div class="doc-info">
                         <h4 data-i18n="doc1-h4">Apresentação M2 — Elaboration</h4>
                         <p data-i18n="doc1-p">Slides da apresentação da fase de Elaboration: arquitetura, integração BLE e primeiros resultados.</p>
                     </div>
                     <div class="doc-action">
-                        <a href="docs/Apresentacao M2.pdf" target="_blank" class="btn btn-sm btn-dark">
+                        <!-- <a href="docs/M2_Elaboration_Slides.pdf" target="_blank" class="btn btn-sm btn-dark">
                             <i class="fa-solid fa-download"></i> <span data-i18n="doc-download">Download PDF</span>
-                        </a>
+                        </a> -->
+                        <span class="badge-soon" data-i18n="badge-soon">Em breve</span>
                     </div>
                 </div>
 
-                <div class="doc-item fade-up delay-2">
-                    <div class="doc-icon"><i class="fa-solid fa-file-pdf"></i></div>
+                <div class="doc-item doc-soon fade-up delay-2">
+                    <div class="doc-icon"><i class="fa-solid fa-file-powerpoint"></i></div>
                     <div class="doc-info">
                         <h4 data-i18n="doc2-h4">Apresentação M3 — Construction</h4>
                         <p data-i18n="doc2-p">Slides da demonstração do protótipo funcional e resultados da fase de Construction.</p>
                     </div>
                     <div class="doc-action">
-                        <a href="docs/Apresentacao M3.pdf" target="_blank" class="btn btn-sm btn-dark">
+                        <!-- <a href="docs/M3_Construction_Slides.pdf" target="_blank" class="btn btn-sm btn-dark">
                             <i class="fa-solid fa-download"></i> <span data-i18n="doc-download">Download PDF</span>
-                        </a>
+                        </a> -->
+                        <span class="badge-soon" data-i18n="badge-soon">Em breve</span>
                     </div>
                 </div>
 
@@ -1534,7 +1528,7 @@
                 </div>
 
                 <div class="team-member fade-up delay-2">
-                    <img src="img/pedro_laredo.jpeg" alt="Pedro Laredo">
+                    <div class="avatar-initials">PL</div>
                     <h4>Pedro Laredo</h4>
                     <p class="role" data-i18n="team-role">Membro da Equipa</p>
                     <div class="social-links">
@@ -1552,7 +1546,7 @@
                 </div>
 
                 <div class="team-member fade-up delay-4">
-                    <img src="img/rafael_soares.png" alt="Rafael Soares">
+                    <div class="avatar-initials">RS</div>
                     <h4>Rafael Soares</h4>
                     <p class="role" data-i18n="team-role">Membro da Equipa</p>
                     <div class="social-links">
@@ -1758,7 +1752,7 @@
                 'demo-sub':    'Demonstração em vídeo do sistema em funcionamento.',
                 'demo-placeholder': 'Vídeo de demonstração em breve',
                 'demo-title':  'Sistema em Ação',
-                'demo-desc':   'Demonstração do pipeline completo: Omi Glasses a capturar áudio e vídeo, deteção de objetos com YOLOv8, estimativa de profundidade com Depth Anything, transcrição com Whisper e alertas hápticos no Brilliant Sole em tempo real.',
+                'demo-desc':   'Vê o sistema a funcionar na prática — um peão equipado com óculos inteligentes e uma pulseira a navegar num ambiente urbano com alertas em tempo real sobre o que o rodeia.',
                 'demo-docs-btn': 'Ver Documentos',
                 'related-h2':  'Trabalhos Relacionados',
                 'related-sub': 'Projetos, infraestruturas e artigos que servem de base à nossa investigação.',
@@ -1889,7 +1883,7 @@
                 'demo-sub':    'Video demonstration of the system in action.',
                 'demo-placeholder': 'Demo video coming soon',
                 'demo-title':  'System in Action',
-                'demo-desc':   'Full pipeline demonstration: Omi Glasses capturing audio and video, object detection with YOLOv8, depth estimation with Depth Anything, transcription with Whisper, and haptic alerts on the Brilliant Sole in real time.',
+                'demo-desc':   'See the system in action — a pedestrian equipped with smart glasses and a wristband navigating an urban environment with real-time awareness of everything around them.',
                 'demo-docs-btn': 'View Documents',
                 'related-h2':  'Related Work',
                 'related-sub': 'Projects, infrastructures, and papers that form the basis of our research.',
